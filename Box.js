@@ -2,15 +2,14 @@ class Box{
   constructor(x, y, width, height){
 
     var options = {
-      restitution:0.3,
+      restitution:0.4,
       friction:1.0,
-      density:1.0
+      //density:1.0
     }
-
+    this.Visibility = 255;
     this.body = Bodies.rectangle(x, y, width, height, options);
     this.width = width;
     this.height = height;
-    this.Visibility = 255;
         
     World.add(world, this.body);
   }
@@ -18,11 +17,12 @@ class Box{
   display(){
     console.log(this.body.speed);
  
-    if(this.body.speed < 9){
+    if(this.body.speed < 15){
       var pos =this.body.position;
       var angle = this.body.angle;
+
       push();
-      translate(pos.x, pos.y);
+      translate(this.body.position.x, this.body.position.y);
       rotate(angle);
       fill("yellow");
       rectMode(CENTER);
@@ -32,9 +32,9 @@ class Box{
     else{
       World.remove(world,this.body); 
       this.Visibility = this.Visibility-5;
+      //push();
       tint(255,this.Visibility);
-      //rect(this.body.position.x, this.body.position.y, 30, 30);
-
+      //pop();
     }
   }
 }

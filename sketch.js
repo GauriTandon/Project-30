@@ -15,6 +15,7 @@ function setup() {
   world = engine.world;
 
   ball = new Ball(100,100,50);
+  //ball.setCollider("rectangle", 0, 0, 20, 80, -45);
 
   slingShot = new SlingShot(ball.body, {x:200, y:150});
   ground1 = new Ground(0,850,3600,20);
